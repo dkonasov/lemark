@@ -8,5 +8,51 @@
             <goals>
                 <goal>test</goal>
             </goals>
+            <properties>
+                <mysql_test_host>"localhost"</mysql_test_host>
+            </properties>
+        </action>
+        <action>
+            <actionName>rebuild</actionName>
+            <packagings>
+                <packaging>*</packaging>
+            </packagings>
+            <goals>
+                <goal>clean</goal>
+                <goal>install</goal>
+                
+            </goals>
+            <properties>
+                <mysql.test.host>localhost</mysql.test.host>
+                <mysql.test.port>3306</mysql.test.port>
+                <mysql.test.database>lemark</mysql.test.database>
+                <mysql.test.user>root</mysql.test.user>
+                <mysql.test.password>admin</mysql.test.password>
+                <mysql.test.options.server.timezone>UTC</mysql.test.options.server.timezone>
+                <mysql.test.options.use.legacy.datetime.code>true</mysql.test.options.use.legacy.datetime.code>
+                <mysql.test.options.use.unicode>true</mysql.test.options.use.unicode>
+                
+                
+                
+                
+                
+                
+                
+                
+                
+            </properties>
+        </action>
+        <action>
+            <actionName>build-with-dependencies</actionName>
+            <reactor>also-make</reactor>
+            <packagings>
+                <packaging>*</packaging>
+            </packagings>
+            <goals>
+                <goal>install</goal>
+            </goals>
+            <properties>
+                <mysql_test_host>"localhost"</mysql_test_host>
+            </properties>
         </action>
     </actions>

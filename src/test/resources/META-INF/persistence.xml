@@ -3,10 +3,15 @@
   <persistence-unit name="LEMARK" transaction-type="RESOURCE_LOCAL">
     <provider>org.hibernate.ejb.HibernatePersistence</provider>
     <properties>
-      <property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver"/>
-      <property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/lemark?useUnicode=true&amp;useJDBCCompliantTimezoneShift=true&amp;useLegacyDatetimeCode=false&amp;serverTimezone=UTC"/>
-      <property name="hibernate.connection.username" value="root"/>
-      <property name="hibernate.connection.password" value="admin"/>
+      <property name="hibernate.connection.driver.class" value="com.mysql.jdbc.Driver"/>
+      <property name="hibernate.connection.url" value="jdbc:mysql://${mysql.test.host}:${mysql.test.port}/${mysql.test.database}"/>
+	  <property name="hibernate.connection.useUnicode" value="${mysql.test.options.use.unicode}" />
+	  <property name="hibernate.connection.useJDBCCompliantTimezoneShift" value="true" />
+	  <property name="hibernate.connection.useJDBCCompliantTimezoneShift" value="${mysql.test.options.use.timezone.shift}" />
+	  <property name="hibernate.connection.useLegacyDatetimeCode" value="${mysql.test.options.use.legacy.datetime.code}" />
+	  <property name="hibernate.connection.serverTimezone" value="${mysql.test.options.server.timezone}" />
+      <property name="hibernate.connection.username" value="${mysql.test.user}"/>
+      <property name="hibernate.connection.password" value="${mysql.test.password}"/>
       <property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect"/>
       <property name="hibernate.hbm2ddl.auto" value="create-drop"/>
     </properties>
