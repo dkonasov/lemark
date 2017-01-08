@@ -26,7 +26,8 @@ public class LemarkDAO<T extends LemarkEntity> {
     }
     public long save(T entity){
         em.getTransaction().begin();
-        T updatedEntity = em.merge(entity);
+        Session session = em.unwrap(Session.class);
+        T updatedEntity = (T)session.merge(entity);
         em.getTransaction().commit();
         return updatedEntity.getId();
     }
