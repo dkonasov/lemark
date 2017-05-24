@@ -10,6 +10,7 @@ import java.util.Map;
 import javax.persistence.EntityManager;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
+import org.hibernate.Transaction;
 import org.hibernate.criterion.Restrictions;
 import ru.dskonasov.lemark.entity.LemarkEntity;
 
@@ -39,7 +40,9 @@ public class LemarkDAO<T extends LemarkEntity> {
     
     public void delete(T entity){
         Session session = em.unwrap(Session.class);
+        Transaction t = session.beginTransaction();
         session.delete(entity);
+        t.commit();
     }
     
     public List<T> getAll(){
