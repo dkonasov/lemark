@@ -39,10 +39,7 @@ public class LemarkDAO<T extends LemarkEntity> {
     }
     
     public void delete(T entity){
-        Session session = em.unwrap(Session.class);
-        Transaction t = session.beginTransaction();
-        session.delete(entity);
-        t.commit();
+        em.remove(em.contains(entity) ? entity : em.merge(entity));
     }
     
     public List<T> getAll(){
